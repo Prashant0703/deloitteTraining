@@ -1,0 +1,24 @@
+create table dept_tab 
+(id number(7),
+name varchar(25)
+);
+
+ desc dept_tab;
+ 
+ alter table dept_tab
+ add constraint pk primary key(id);
+ insert into dept_tab
+ select department_id,department_name from departments;
+ create table emp_tab1
+ (id number(7) primary key,
+ last_name varchar(25),
+ first_name varchar(25),
+ dept_id number(7));
+ 
+ alter table emp_tab1
+ drop column dept_id;
+ 
+ 
+ insert into emp_tab1
+ select employee_id,last_name, last_name from employees;
+

@@ -1,0 +1,725 @@
+SQL> select rpad('*',trunc(salary/1000),'*') from employees;
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+************************
+*****************
+*****************
+*********
+******
+****
+****
+****
+************
+*********
+********
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+*******
+*******
+******
+***********
+***
+**
+**
+**
+**
+********
+********
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+*******
+******
+*****
+***
+**
+**
+**
+***
+**
+**
+**
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+***
+**
+**
+**
+***
+***
+**
+**
+***
+***
+**
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+**
+**************
+*************
+************
+***********
+**********
+**********
+*********
+*********
+********
+*******
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+*******
+**********
+*********
+*********
+********
+*******
+*******
+**********
+*********
+*******
+******
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+******
+******
+***********
+**********
+*********
+*******
+*******
+******
+***********
+********
+********
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+********
+*******
+******
+***
+***
+**
+**
+****
+****
+***
+***
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+***
+***
+**
+**
+****
+***
+***
+**
+***
+***
+**
+
+RPAD('*',TRUNC(SALARY/1000),'*')
+--------------------------------------------------------------------------------
+**
+****
+*************
+******
+******
+**********
+************
+********
+
+107 rows selected.
+
+SQL> select last_name,to_char(hire_date,'DAY') "Hire Day"
+  2  from employees;
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+King                      TUESDAY
+Kochhar                   WEDNESDAY
+De Haan                   SATURDAY
+Hunold                    TUESDAY
+Ernst                     MONDAY
+Austin                    SATURDAY
+Pataballa                 SUNDAY
+Lorentz                   WEDNESDAY
+Greenberg                 SATURDAY
+Faviet                    FRIDAY
+Chen                      WEDNESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Sciarra                   FRIDAY
+Urman                     TUESDAY
+Popp                      FRIDAY
+Raphaely                  SATURDAY
+Khoo                      SUNDAY
+Baida                     SATURDAY
+Tobias                    SUNDAY
+Himuro                    WEDNESDAY
+Colmenares                FRIDAY
+Weiss                     SUNDAY
+Fripp                     SUNDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Kaufling                  THURSDAY
+Vollman                   MONDAY
+Mourgos                   FRIDAY
+Nayer                     SATURDAY
+Mikkilineni               THURSDAY
+Landry                    SUNDAY
+Markle                    SATURDAY
+Bissot                    SATURDAY
+Atkinson                  SUNDAY
+Marlow                    WEDNESDAY
+Olson                     TUESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Mallin                    MONDAY
+Rogers                    SATURDAY
+Gee                       WEDNESDAY
+Philtanker                WEDNESDAY
+Ladwig                    MONDAY
+Stiles                    WEDNESDAY
+Seo                       SUNDAY
+Patel                     THURSDAY
+Rajs                      FRIDAY
+Davies                    SATURDAY
+Matos                     WEDNESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Vargas                    SUNDAY
+Russell                   FRIDAY
+Partners                  WEDNESDAY
+Errazuriz                 THURSDAY
+Cambrault                 MONDAY
+Zlotkey                   TUESDAY
+Tucker                    SUNDAY
+Bernstein                 THURSDAY
+Hall                      SATURDAY
+Olsen                     THURSDAY
+Cambrault                 SATURDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Tuvault                   FRIDAY
+King                      FRIDAY
+Sully                     THURSDAY
+McEwen                    SUNDAY
+Smith                     THURSDAY
+Doran                     THURSDAY
+Sewall                    FRIDAY
+Vishney                   FRIDAY
+Greene                    MONDAY
+Marvins                   THURSDAY
+Lee                       SATURDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Ande                      MONDAY
+Banda                     MONDAY
+Ozer                      FRIDAY
+Bloom                     THURSDAY
+Fox                       TUESDAY
+Smith                     FRIDAY
+Bates                     SATURDAY
+Kumar                     MONDAY
+Abel                      TUESDAY
+Hutton                    SATURDAY
+Taylor                    FRIDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Livingston                SUNDAY
+Grant                     THURSDAY
+Johnson                   FRIDAY
+Taylor                    TUESDAY
+Fleaur                    THURSDAY
+Sullivan                  THURSDAY
+Geoni                     SUNDAY
+Sarchand                  TUESDAY
+Bull                      SUNDAY
+Dellinger                 SATURDAY
+Cabrio                    WEDNESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Chung                     TUESDAY
+Dilly                     SATURDAY
+Gates                     TUESDAY
+Perkins                   WEDNESDAY
+Bell                      WEDNESDAY
+Everett                   THURSDAY
+McCain                    SATURDAY
+Jones                     SATURDAY
+Walsh                     MONDAY
+Feeney                    TUESDAY
+OConnell                  THURSDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Grant                     SUNDAY
+Whalen                    WEDNESDAY
+Hartstein                 TUESDAY
+Fay                       WEDNESDAY
+Mavris                    FRIDAY
+Baer                      FRIDAY
+Higgins                   FRIDAY
+Gietz                     FRIDAY
+
+107 rows selected.
+
+SQL> select last_name,to_char(hire_date,'DAY') "Hire Day"
+  2  from employees
+  3  group by to_char(hire_date,'DAY')
+  4  order by to_char(hire_date,'D');
+select last_name,to_char(hire_date,'DAY') "Hire Day"
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression
+
+
+SQL> select last_name,to_char(hire_date,'DAY') "Hire Day"
+  2  from employees
+  3  order by to_char(hire_date,'D');
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Pataballa                 SUNDAY
+Landry                    SUNDAY
+Grant                     SUNDAY
+Tucker                    SUNDAY
+McEwen                    SUNDAY
+Fripp                     SUNDAY
+Weiss                     SUNDAY
+Tobias                    SUNDAY
+Vargas                    SUNDAY
+Livingston                SUNDAY
+Bull                      SUNDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Khoo                      SUNDAY
+Geoni                     SUNDAY
+Seo                       SUNDAY
+Atkinson                  SUNDAY
+Ernst                     MONDAY
+Walsh                     MONDAY
+Vollman                   MONDAY
+Kumar                     MONDAY
+Banda                     MONDAY
+Ande                      MONDAY
+Greene                    MONDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Cambrault                 MONDAY
+Ladwig                    MONDAY
+Mallin                    MONDAY
+Chung                     TUESDAY
+Gates                     TUESDAY
+Fox                       TUESDAY
+Zlotkey                   TUESDAY
+Feeney                    TUESDAY
+Sarchand                  TUESDAY
+Olson                     TUESDAY
+Urman                     TUESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Abel                      TUESDAY
+Hunold                    TUESDAY
+King                      TUESDAY
+Hartstein                 TUESDAY
+Taylor                    TUESDAY
+Whalen                    WEDNESDAY
+Bell                      WEDNESDAY
+Perkins                   WEDNESDAY
+Cabrio                    WEDNESDAY
+Partners                  WEDNESDAY
+Matos                     WEDNESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Stiles                    WEDNESDAY
+Philtanker                WEDNESDAY
+Gee                       WEDNESDAY
+Marlow                    WEDNESDAY
+Himuro                    WEDNESDAY
+Chen                      WEDNESDAY
+Lorentz                   WEDNESDAY
+Fay                       WEDNESDAY
+Kochhar                   WEDNESDAY
+Kaufling                  THURSDAY
+Mikkilineni               THURSDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Patel                     THURSDAY
+Errazuriz                 THURSDAY
+Bernstein                 THURSDAY
+Olsen                     THURSDAY
+Sully                     THURSDAY
+Smith                     THURSDAY
+Doran                     THURSDAY
+Marvins                   THURSDAY
+Bloom                     THURSDAY
+Grant                     THURSDAY
+Fleaur                    THURSDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Sullivan                  THURSDAY
+Everett                   THURSDAY
+OConnell                  THURSDAY
+Higgins                   FRIDAY
+Sciarra                   FRIDAY
+Mavris                    FRIDAY
+Mourgos                   FRIDAY
+Russell                   FRIDAY
+Colmenares                FRIDAY
+Rajs                      FRIDAY
+Johnson                   FRIDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Taylor                    FRIDAY
+Faviet                    FRIDAY
+Gietz                     FRIDAY
+Smith                     FRIDAY
+Ozer                      FRIDAY
+Popp                      FRIDAY
+Vishney                   FRIDAY
+Sewall                    FRIDAY
+King                      FRIDAY
+Tuvault                   FRIDAY
+Baer                      FRIDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Jones                     SATURDAY
+McCain                    SATURDAY
+Dilly                     SATURDAY
+Dellinger                 SATURDAY
+Hutton                    SATURDAY
+Bates                     SATURDAY
+Lee                       SATURDAY
+Cambrault                 SATURDAY
+Hall                      SATURDAY
+Davies                    SATURDAY
+Rogers                    SATURDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Bissot                    SATURDAY
+Markle                    SATURDAY
+Nayer                     SATURDAY
+Baida                     SATURDAY
+Raphaely                  SATURDAY
+Greenberg                 SATURDAY
+De Haan                   SATURDAY
+Austin                    SATURDAY
+
+107 rows selected.
+
+SQL> l
+  1  select last_name,to_char(hire_date,'DAY') "Hire Day"
+  2  from employees
+  3* order by to_char(hire_date,'D')
+SQL> select last_name,to_char(hire_date,'DAY') "Hire Day"
+  2  from employees
+  3  order by to_char(hire_date,'D')-1;
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Pataballa                 SUNDAY
+Landry                    SUNDAY
+Grant                     SUNDAY
+Tucker                    SUNDAY
+McEwen                    SUNDAY
+Fripp                     SUNDAY
+Weiss                     SUNDAY
+Tobias                    SUNDAY
+Vargas                    SUNDAY
+Livingston                SUNDAY
+Bull                      SUNDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Khoo                      SUNDAY
+Geoni                     SUNDAY
+Seo                       SUNDAY
+Atkinson                  SUNDAY
+Ernst                     MONDAY
+Walsh                     MONDAY
+Vollman                   MONDAY
+Kumar                     MONDAY
+Banda                     MONDAY
+Ande                      MONDAY
+Greene                    MONDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Cambrault                 MONDAY
+Ladwig                    MONDAY
+Mallin                    MONDAY
+Chung                     TUESDAY
+Gates                     TUESDAY
+Fox                       TUESDAY
+Zlotkey                   TUESDAY
+Feeney                    TUESDAY
+Sarchand                  TUESDAY
+Olson                     TUESDAY
+Urman                     TUESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Abel                      TUESDAY
+Hunold                    TUESDAY
+King                      TUESDAY
+Hartstein                 TUESDAY
+Taylor                    TUESDAY
+Whalen                    WEDNESDAY
+Bell                      WEDNESDAY
+Perkins                   WEDNESDAY
+Cabrio                    WEDNESDAY
+Partners                  WEDNESDAY
+Matos                     WEDNESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Stiles                    WEDNESDAY
+Philtanker                WEDNESDAY
+Gee                       WEDNESDAY
+Marlow                    WEDNESDAY
+Himuro                    WEDNESDAY
+Chen                      WEDNESDAY
+Lorentz                   WEDNESDAY
+Fay                       WEDNESDAY
+Kochhar                   WEDNESDAY
+Kaufling                  THURSDAY
+Mikkilineni               THURSDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Patel                     THURSDAY
+Errazuriz                 THURSDAY
+Bernstein                 THURSDAY
+Olsen                     THURSDAY
+Sully                     THURSDAY
+Smith                     THURSDAY
+Doran                     THURSDAY
+Marvins                   THURSDAY
+Bloom                     THURSDAY
+Grant                     THURSDAY
+Fleaur                    THURSDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Sullivan                  THURSDAY
+Everett                   THURSDAY
+OConnell                  THURSDAY
+Higgins                   FRIDAY
+Sciarra                   FRIDAY
+Mavris                    FRIDAY
+Mourgos                   FRIDAY
+Russell                   FRIDAY
+Colmenares                FRIDAY
+Rajs                      FRIDAY
+Johnson                   FRIDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Taylor                    FRIDAY
+Faviet                    FRIDAY
+Gietz                     FRIDAY
+Smith                     FRIDAY
+Ozer                      FRIDAY
+Popp                      FRIDAY
+Vishney                   FRIDAY
+Sewall                    FRIDAY
+King                      FRIDAY
+Tuvault                   FRIDAY
+Baer                      FRIDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Jones                     SATURDAY
+McCain                    SATURDAY
+Dilly                     SATURDAY
+Dellinger                 SATURDAY
+Hutton                    SATURDAY
+Bates                     SATURDAY
+Lee                       SATURDAY
+Cambrault                 SATURDAY
+Hall                      SATURDAY
+Davies                    SATURDAY
+Rogers                    SATURDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Bissot                    SATURDAY
+Markle                    SATURDAY
+Nayer                     SATURDAY
+Baida                     SATURDAY
+Raphaely                  SATURDAY
+Greenberg                 SATURDAY
+De Haan                   SATURDAY
+Austin                    SATURDAY
+
+107 rows selected.
+
+SQL> select last_name,to_char(hire_date,'DAY') "Hire Day"
+  2  from employees
+  3  order by to_char(hire_date-1,'D');
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Ladwig                    MONDAY
+Cambrault                 MONDAY
+Mallin                    MONDAY
+Ernst                     MONDAY
+Greene                    MONDAY
+Banda                     MONDAY
+Walsh                     MONDAY
+Ande                      MONDAY
+Vollman                   MONDAY
+Kumar                     MONDAY
+Olson                     TUESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Urman                     TUESDAY
+Hunold                    TUESDAY
+King                      TUESDAY
+Hartstein                 TUESDAY
+Feeney                    TUESDAY
+Gates                     TUESDAY
+Chung                     TUESDAY
+Sarchand                  TUESDAY
+Taylor                    TUESDAY
+Abel                      TUESDAY
+Fox                       TUESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Zlotkey                   TUESDAY
+Whalen                    WEDNESDAY
+Philtanker                WEDNESDAY
+Perkins                   WEDNESDAY
+Bell                      WEDNESDAY
+Kochhar                   WEDNESDAY
+Cabrio                    WEDNESDAY
+Chen                      WEDNESDAY
+Himuro                    WEDNESDAY
+Marlow                    WEDNESDAY
+Fay                       WEDNESDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Gee                       WEDNESDAY
+Partners                  WEDNESDAY
+Matos                     WEDNESDAY
+Stiles                    WEDNESDAY
+Lorentz                   WEDNESDAY
+Kaufling                  THURSDAY
+Mikkilineni               THURSDAY
+Patel                     THURSDAY
+Errazuriz                 THURSDAY
+Bernstein                 THURSDAY
+Olsen                     THURSDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Sully                     THURSDAY
+Smith                     THURSDAY
+Doran                     THURSDAY
+Marvins                   THURSDAY
+Bloom                     THURSDAY
+Grant                     THURSDAY
+Fleaur                    THURSDAY
+Sullivan                  THURSDAY
+Everett                   THURSDAY
+OConnell                  THURSDAY
+Tuvault                   FRIDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Popp                      FRIDAY
+Gietz                     FRIDAY
+King                      FRIDAY
+Russell                   FRIDAY
+Sewall                    FRIDAY
+Baer                      FRIDAY
+Rajs                      FRIDAY
+Vishney                   FRIDAY
+Higgins                   FRIDAY
+Ozer                      FRIDAY
+Colmenares                FRIDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Johnson                   FRIDAY
+Taylor                    FRIDAY
+Mourgos                   FRIDAY
+Faviet                    FRIDAY
+Smith                     FRIDAY
+Sciarra                   FRIDAY
+Mavris                    FRIDAY
+Cambrault                 SATURDAY
+Hall                      SATURDAY
+Davies                    SATURDAY
+Rogers                    SATURDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Bissot                    SATURDAY
+Markle                    SATURDAY
+Nayer                     SATURDAY
+Baida                     SATURDAY
+Raphaely                  SATURDAY
+Greenberg                 SATURDAY
+De Haan                   SATURDAY
+Austin                    SATURDAY
+Jones                     SATURDAY
+McCain                    SATURDAY
+Dilly                     SATURDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Dellinger                 SATURDAY
+Hutton                    SATURDAY
+Bates                     SATURDAY
+Lee                       SATURDAY
+Pataballa                 SUNDAY
+Tucker                    SUNDAY
+Livingston                SUNDAY
+Weiss                     SUNDAY
+Geoni                     SUNDAY
+Bull                      SUNDAY
+Grant                     SUNDAY
+
+LAST_NAME                 Hire Day
+------------------------- ---------
+Khoo                      SUNDAY
+Landry                    SUNDAY
+Atkinson                  SUNDAY
+Tobias                    SUNDAY
+Seo                       SUNDAY
+Vargas                    SUNDAY
+McEwen                    SUNDAY
+Fripp                     SUNDAY
+
+107 rows selected.

@@ -1,0 +1,165 @@
+set serverout on
+
+--PLSQL programs
+
+ declare
+    vname varchar2(20);
+    vsal number;
+begin
+    SELECT last_name,salary*12
+    INTO vname,vsal
+    FROM employees
+    WHERE department_id=&deptid;
+    
+    dbms_output.put_line('Name is :'||vname);
+    dbms_output.put_line('Annual salary is:'||vsal);
+    
+exception
+   when  no_data_found then
+     dbms_output.put_line('NO Emps in this dept');
+    when too_many_rows then
+        dbms_output.put_line('More than one emps');
+end;
+/
+
+<<a>>
+declare 
+    x number:=5;
+begin
+    <<b>>
+    declare 
+        x number:=6;
+    begin
+        dbms_output.put_line('inner x '||x);
+         dbms_output.put_line('outer x '||x);   
+    end;
+    dbms_output.put_line('x '||x);
+end;
+
+
+
+declare 
+    x number:=10;
+begin 
+    WHILE x<=1
+    loop
+            dbms_output.put_line(x);
+            x:=x-1;
+    end loop;
+end;
+/
+
+
+
+
+begin
+    FOR i IN 1..10
+    loop
+        dbms_output.put_line(i);
+    end loop;
+end;
+
+
+begin
+    FOR i IN REVERSE 1..10
+    loop
+        dbms_output.put_line(i);
+        --i:=i+2; I cannot be modified
+    end loop;
+end;
+
+
+
+declare
+    vname varchar(20);
+    vsal number;
+begin
+    FOR i IN 100..109
+    loop
+        Select last_name,salary
+        INTO vname,vsal
+        FROm employees
+        WHERE employee_id=i;
+        
+        dbms_output.put_line(vname||'   '||vsal);
+    end loop;
+end;
+
+
+--RECORD TYPE
+declare
+TYPE emp_record_type IS RECORD
+    ( last_name VARCHAR2(25),
+      job_id VARCHAR2(10),
+      salary NUMBER(8,2));
+    
+    emp_record emp_record_type;
+    
+begin 
+    select last_name,job_id,salary
+    into emp_record
+    from employees
+    where employee_id=&empid;
+    
+    dbms_output.put_line(emp_record.last_name||' '||emp_record.job_id||' '||emp_record.salary);
+end;
+/
+
+
+declare 
+    emp_record employees%rowtype;
+begin
+    select *
+    into emp_record
+    from employees
+    where employee_id=&empid;
+    
+    dbms_output.put_line(emp_record.last_name||' '||emp_record.job_id||' '||emp_record.salary);
+    
+    end;
+    /
+    
+    --INDEX TYPE
+    
+    
+declare
+    type num_tab_type is table of number
+    index by binary_integer;
+    
+    num_tab num_tab_type;
+
+begin
+ for i in 1..10
+ loop
+    num_tab(i):=i*10;
+ end loop;
+ 
+ for i in num_tab.first..num_tab.last
+ loop
+    dbms_output.put_line(num_tab(i));
+ end loop;
+end;
+    /
+
+declare
+    type num_tab_type is table of VARCHAR2(25)
+    index by binary_integer;
+    
+    num_tab num_tab_type;
+
+begin
+ for i in 100..109
+ loop
+    select last_name
+    into num_tab(i)
+    from employees
+    where employee_id=i;
+ end loop;
+ 
+ for i in num_tab.first..num_tab.last
+ loop
+    dbms_output.put_line(num_tab(i));
+ end loop;
+end;
+    /
+   
